@@ -4,4 +4,4 @@ Takes values from a specific column in one table and creates a row of enriched d
 
 Uses Spring Batch to handle database data in chunks. Uses separate data connections for main model and batch tables.
 
-@see [a relative link](src/main/java/dk/lector/lts/utils/data_transformation) classes
+@see [implementation](src/main/java/dk/lector/lts/utils/data_transformation) classes
