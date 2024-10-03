@@ -1,11 +1,14 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.3.0'
+	id 'org.springframework.boot' version '3.3.4'
 	id 'io.spring.dependency-management' version '1.1.5'
 }
 
 group = 'dk.lector.lts.utils'
 version = '0.0.1-SNAPSHOT'
+// Get the local secrets for proprietary maven repo
+def customMavenProps = new Properties()
+file("/src/main/resources/env.properties").withInputStream { customMavenProps.load(it) }
 
 java {
 	toolchain {
@@ -15,6 +18,13 @@ java {
 
 repositories {
 	mavenCentral()
+	maven {
+    	url customMavenProps.getProperty('maven_url')
+        credentials {
+            username customMavenProps.getProperty('maven_user')
+            password customMavenProps.getProperty('maven_password')
+        }
+	}
 }
 
 dependencies {
@@ -25,6 +35,9 @@ dependencies {
 	implementation 'com.h2database:h2'
 	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.17.0'
 	implementation 'org.apache.commons:commons-lang3:3.14.0'
+	
+	// Proprietary domain model
+	implementation group: 'dk.lector.lts', name: 'lts-entity-model', version: '2.3'
 	
 	modules {
 		module("org.springframework.boot:spring-boot-starter-logging") {

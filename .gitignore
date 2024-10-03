@@ -8,9 +8,6 @@ build/
 ### local properties ###
 /src/main/resources/env.properties
 
-### proprietary domain model ###
-/src/main/java/dk/lector/trading/persistence/entities
-
 ### STS ###
 .apt_generated
 .classpath

@@ -1,6 +1,7 @@
 package dk.lector.trading.common.fetchAndSaveUtils.dto;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -35,7 +36,7 @@ public class ObjectAttributeDTO implements Comparable<ObjectAttributeDTO> {
 	private String categoryName;
 	private String categoryContext;
 	
-	private Timestamp createdDate;
+	private LocalDateTime createdDate;
 	private UsersEntity createdBy;
 	
 
@@ -45,7 +46,7 @@ public class ObjectAttributeDTO implements Comparable<ObjectAttributeDTO> {
 		this.referencedId = referencedId;
 	}
 
-	public ObjectAttributeDTO(String attributeValue, Long referencedId, Timestamp createdDate, UsersEntity createdBy) {
+	public ObjectAttributeDTO(String attributeValue, Long referencedId, LocalDateTime createdDate, UsersEntity createdBy) {
 		this.attributeValue = attributeValue;
 		this.referencedId = referencedId;
 		this.createdDate = createdDate;
